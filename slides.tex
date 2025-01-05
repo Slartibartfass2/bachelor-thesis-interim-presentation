@@ -1,17 +1,23 @@
 \documentclass[
-	aspectratio=169, % default is 43
-	8pt % font size, default is 11pt
+    aspectratio=169, % default is 43
+    8pt % font size, default is 11pt
 ]{beamer}
 \def\templatepath{./fancy-beamer-uulm/}
 \usepackage{\templatepath fancybeamer} % use the fancy beamer package
 \usepackage{\templatepath fancyuulm} % use the uulm colorpalette
+\InputIfFileExists{listings.tex}{%
+    \typeout{Loaded listings}%
+}{%
+    \typeout{Couldn't load listings}%
+}%
+\LoadLanguage{R}
 
 %\usepackage[ngerman]{babel} % use this line for slides in German
 
-\title[Short Title]{Title} % short title is used for the slide footer but optional
-\subtitle[Short Subtitle]{Subtitle} % subtitles are optional at all
-\author[Short Author]{Author} % short author title is used for the slide footer but optional
-\date{\today} % use a particular date here if needed
+\title[Short Title]{Field-Sensitive Pointer Analysis for Static Dataflow in the R programming language}
+\subtitle[Short Subtitle]{Subtitle}
+\author[Short Author]{Felix Schlegel}
+\date{\today}
 
 % set paths for logos
 \setpaths{{\templatepath logos/}}
@@ -24,9 +30,16 @@
 
 \section{First Section}
 
-\subsection{First Subsection}
-\begin{frame}{\insertsubsection}
-    Content of first slide
+\subsection{The goal}
+\begin{frame}[fragile]{\insertsubsection}
+    \begin{fancycolumns}[columns=2]
+        \begin{minted}{R}
+            person <- list(name = 1, age = 2)
+        \end{minted}
+        Großes Data Frame Beispiel gesliced
+    \nextcolumn
+        Großes Data Frame Beispiel genauer gesliced
+    \end{fancycolumns}
 \end{frame}
 
 \end{document}
